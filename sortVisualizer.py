@@ -1,12 +1,14 @@
 import numpy as np
 import matplotlib.pyplot as plt
 from matplotlib.animation import FuncAnimation
+import random
 
 
 
 #create random array
-x=range(10, 201)
-array= [x**2 for x in x]
+x=int(input("Enter size"))
+array= [i for i in range(1, x+1)]
+random.shuffle(array)
 
 def insertion_sort(array):
 
@@ -24,30 +26,36 @@ def insertion_sort(array):
             yield array
 
         array[j + 1] = key
+        array[i].set_color('r')
         yield array
 
+generator = insertion_sort(array)
+#algorithm= 'Insertion Sort'
+
 fig, ax = plt.subplots()
-plt.bar(x,array)
+#plt.bar(x,array)
 plt.xlabel('Bars')
 plt.ylabel('Values')
 
-generator = insertion_sort(array)
+set_xlim = (0, x)
+set_ylim = (1.2* x)
+text = ax.text(0.01, 0.95, "", transform=ax.transAxes)
+iteration = [0]
+rects = ax.bar(range(len(array)), array, align = 'edge')
 
-# iteration = [0]
-
-# def animate(array, iteration):
+def animate(A, rects, iteration):
   
-#     # setting the size of each bar equal
-#     # to the value of the elements
-#     for rect, val in zip(rects, A):
-#         rect.set_height(val)
+    # setting the size of each bar equal
+    # to the value of the elements
+    for rect, val in zip(rects, A):
+        rect.set_height(val)
   
-#     iteration[0] += 1
-#     text.set_text("iterations : {}".format(iteration[0]))
+    iteration[0] += 1
+    #text.set_text("iterations : {}".format(iteration[0]))
   
   
-anim = FuncAnimation(fig, func=None,
-                     fargs=None, frames=generator, interval=50,
+anim = FuncAnimation(fig, func=animate,
+                     fargs=(rects, iteration), frames=generator, interval=50,
                      repeat=False)
 
 plt.show()
