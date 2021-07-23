@@ -6,7 +6,7 @@ import random
 
 
 #create random array
-x=int(input("Enter size"))
+x=random.randrange(30, 50)
 array= [i for i in range(1, x+1)]
 random.shuffle(array)
 
@@ -26,7 +26,7 @@ def insertion_sort(array):
             yield array
 
         array[j + 1] = key
-        array[i].set_color('r')
+        #array[i].set_color('r')
         yield array
 
 generator = insertion_sort(array)
@@ -34,6 +34,7 @@ generator = insertion_sort(array)
 
 fig, ax = plt.subplots()
 #plt.bar(x,array)
+ax.set_title("SortVisualizer", fontsize=20)
 plt.xlabel('Bars')
 plt.ylabel('Values')
 
