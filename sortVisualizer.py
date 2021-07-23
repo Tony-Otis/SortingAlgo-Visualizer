@@ -1,14 +1,14 @@
-import numpy as np
-import matplotlib.pyplot as plt
-from matplotlib.animation import FuncAnimation
 import random
 
+import matplotlib.pyplot as plt
+from matplotlib.animation import FuncAnimation, writers
 
+# create random array
 
-#create random array
-x=random.randrange(30, 50)
-array= [i for i in range(1, x+1)]
+x = random.randrange(20, 50)
+array = [i for i in range(1, x - 1)]
 random.shuffle(array)
+
 
 def insertion_sort(array):
 
@@ -16,7 +16,7 @@ def insertion_sort(array):
 
         key = array[i]
 
-        j = i-1
+        j = i - 1
 
         while j >= 0 and key < array[j]:
 
@@ -26,37 +26,49 @@ def insertion_sort(array):
             yield array
 
         array[j + 1] = key
-        #array[i].set_color('r')
+
+        # array[i].set_color('r')
+
         yield array
 
-generator = insertion_sort(array)
-#algorithm= 'Insertion Sort'
 
-fig, ax = plt.subplots()
-#plt.bar(x,array)
-ax.set_title("SortVisualizer", fontsize=20)
+generator = insertion_sort(array)
+
+(fig, ax) = plt.subplots(figsize=(15,9), dpi=128)
+ax.set_title('SortVisualizer', fontsize=20)
 plt.xlabel('Bars')
 plt.ylabel('Values')
 
 set_xlim = (0, x)
-set_ylim = (1.2* x)
-text = ax.text(0.01, 0.95, "", transform=ax.transAxes)
+set_ylim = 1.2 * x
+text = ax.text(0.01, 0.95, '', transform=ax.transAxes)
 iteration = [0]
-rects = ax.bar(range(len(array)), array, align = 'edge')
+rects = ax.bar(range(len(array)), array, align='edge')
 
-def animate(A, rects, iteration):
-  
+
+def animate(array, rects, iteration):
+
     # setting the size of each bar equal
     # to the value of the elements
-    for rect, val in zip(rects, A):
-        rect.set_height(val)
-  
-    iteration[0] += 1
-    #text.set_text("iterations : {}".format(iteration[0]))
-  
-  
-anim = FuncAnimation(fig, func=animate,
-                     fargs=(rects, iteration), frames=generator, interval=50,
-                     repeat=False)
 
+    for (rect, val) in zip(rects, array):
+        rect.set_height(val)
+
+    iteration[0] += 1
+
+
+animation = FuncAnimation(
+    fig,
+    func=animate,
+    fargs=(rects, iteration),
+    frames=generator,
+    interval=4,
+    repeat=False,
+    )
+
+#setting up writers object
+writer=writers['pillow']
+writer = writer(fps=30, metadata={'artist': 'Me'}, bitrate=1800)
+
+animation.save('Insertion Sort Visualization.gif')
 plt.show()
