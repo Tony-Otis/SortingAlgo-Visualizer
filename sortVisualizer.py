@@ -2,6 +2,7 @@ import random
 
 import matplotlib.pyplot as plt
 from matplotlib.animation import FuncAnimation, writers
+from insertionSort import insertion_sort
 
 # create random array
 
@@ -10,26 +11,26 @@ array = [i for i in range(1, x + 1)]
 random.shuffle(array)
 
 
-def insertion_sort(array):
+# def insertion_sort(array):
 
-    for i in range(1, len(array)):
+#     for i in range(1, len(array)):
 
-        key = array[i]
+#         key = array[i]
 
-        j = i - 1
+#         j = i - 1
 
-        while j >= 0 and key < array[j]:
+#         while j >= 0 and key < array[j]:
 
-            array[j + 1] = array[j]
-            j -= 1
+#             array[j + 1] = array[j]
+#             j -= 1
 
-            yield array
+#             yield array
 
-        array[j + 1] = key
+#         array[j + 1] = key
 
-        # array[i].set_color('r')
+#         # array[i].set_color('r')
 
-        yield array
+#         yield array
 
 
 generator = insertion_sort(array)
@@ -49,7 +50,7 @@ rect = ax.bar(range(len(array)), array, align='edge')
 def animate(array, rect, iteration):
 
     # setting the size of each bar equal
-    # to the value of the elements
+    # to the value of the arrays
 
     for (rect, val) in zip(rect, array):
         rect.set_height(val)
@@ -66,9 +67,10 @@ animation = FuncAnimation(
     repeat=False,
     )
 
-#setting up writers object
+#setting up writers object to capture animation in gif formart
 # writer=writers['pillow']
 # writer = writer(fps=30, metadata={'artist': 'Me'}, bitrate=1800)
 
 # animation.save('Insertion Sort Visualization.gif')
+
 plt.show()
