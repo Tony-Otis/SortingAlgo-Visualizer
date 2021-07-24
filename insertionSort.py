@@ -15,6 +15,5 @@ def insertion_sort(array):
 
         array[j + 1] = key
 
-        # array[i].set_color('r')
 
         yield array
