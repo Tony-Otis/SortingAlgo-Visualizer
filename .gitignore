@@ -112,8 +112,3 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
-exercise.py
-cubes.py
-random_walk.py
-rw_visual.py
-visualizer.py
