@@ -24,7 +24,7 @@ ax.set_title('SortVisualizer', fontsize=20)
 plt.xlabel('Bars')
 plt.ylabel('Values')
 
-set_xlim = (5, x)
+set_xlim = (0, x)
 set_ylim = (1.2 * x)
 text = ax.text(0.01, 0.95, '', transform=ax.transAxes)
 iter = [0]
