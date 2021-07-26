@@ -15,9 +15,9 @@ random.shuffle(array)
 
 generator = int(input('choose algorithm, 1:insertion, 2:selection  :'))
 if generator == 1:
-    insertion_sort(array)
+    generator=insertion_sort(array)
 elif generator == 2:
-    selection_sort(array)
+    generator=selection_sort(array)
 
 (fig, ax) = plt.subplots()
 ax.set_title('SortVisualizer', fontsize=20)
