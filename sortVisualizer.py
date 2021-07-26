@@ -13,7 +13,7 @@ array = [i for i in range(1, x + 1)]
 random.shuffle(array)
 
 
-generator = int(input('choose algorith, 1:insertion, 2:selection  :'))
+generator = int(input('choose algorithm, 1:insertion, 2:selection  :'))
 if generator == 1:
     insertion_sort(array)
 elif generator == 2:
