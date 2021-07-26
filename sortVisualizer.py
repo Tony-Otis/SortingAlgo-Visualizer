@@ -4,7 +4,7 @@ import matplotlib.pyplot as plt
 from matplotlib.animation import FuncAnimation, writers
 from insertionSort import insertion_sort
 from selectionsort import selection_sort
-from matplotlib.widgets import Button
+
 
 # create random array
 
@@ -13,7 +13,7 @@ array = [i for i in range(1, x + 1)]
 random.shuffle(array)
 
 
-generator = int(input('choose algorithm, 1:insertion, 2:selection  :'))
+generator = int(input('choose algorith, 1:insertion, 2:selection  :'))
 if generator == 1:
     generator=insertion_sort(array)
 elif generator == 2:
@@ -22,13 +22,13 @@ elif generator == 2:
 (fig, ax) = plt.subplots()
 ax.set_title('SortVisualizer', fontsize=20)
 plt.xlabel('Bars')
-plt.ylabel('Arrays')
+plt.ylabel('Values')
 
 set_xlim = (0, x)
 set_ylim = (1.2 * x)
 text = ax.text(0.01, 0.95, '', transform=ax.transAxes)
 iter = [0]
-rect = ax.bar(range(len(array)), array, color='green')
+rect = ax.bar(range(len(array)), array)
 
 
 def animate(array, rect, iter):
