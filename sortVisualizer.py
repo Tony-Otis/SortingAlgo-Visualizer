@@ -13,6 +13,7 @@ array = [i for i in range(1, x + 1)]
 random.shuffle(array)
 
 
+
 generator = int(input('choose algorith, 1:insertion, 2:selection  :'))
 if generator == 1:
     generator=insertion_sort(array)
@@ -28,7 +29,7 @@ set_xlim = (0, x)
 set_ylim = (1.2 * x)
 iter = [0]
 rect = ax.bar(range(len(array)), array)
-rect[1].set_color('red')
+#rect[1].set_color('red')
 
 
 def animate(array, rect, iter):
@@ -51,10 +52,16 @@ animation = FuncAnimation(
     repeat=False,
 )
 
+save = input('Save Animation? (y|n) :')
+if save == 'y':
+    save=True
+elif save == 'n':
+    save=False
 # setting up writers object to capture animation in gif formart
-# writer=writers['pillow']
-# writer = writer(fps=30, metadata={'artist': 'Me'}, bitrate=1800)
+writer=writers['pillow']
+writer = writer(fps=30, metadata={'artist': 'Me'}, bitrate=1800)
 
-# animation.save('Insertion Sort Visualization.gif')
+if save:
+    animation.save('visualization.gif')
 
 plt.show()
