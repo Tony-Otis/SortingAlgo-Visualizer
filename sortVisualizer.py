@@ -53,9 +53,7 @@ animation = FuncAnimation(
 )
 
 save = input('Save Animation? (y|n) :')
-if save == 'y':
-    save=True
-elif save == 'n':
+if save != 'y':
     save=False
 # setting up writers object to capture animation in gif formart
 writer=writers['pillow']
