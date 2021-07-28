@@ -4,6 +4,7 @@ import matplotlib.pyplot as plt
 from matplotlib.animation import FuncAnimation, writers
 from insertionSort import insertion_sort
 from selectionsort import selection_sort
+from mergesort import merge_sort
 
 
 # create random array
@@ -14,11 +15,13 @@ random.shuffle(array)
 
 
 
-generator = int(input('choose algorith, 1:insertion, 2:selection  :'))
+generator = int(input('choose algorith, 1:insertion, 2:selection, 3:mergesort  :'))
 if generator == 1:
     generator=insertion_sort(array)
 elif generator == 2:
     generator=selection_sort(array)
+elif generator == 3:
+    generator=merge_sort(array)
 
 (fig, ax) = plt.subplots()
 ax.set_title('SortVisualizer', fontsize=20)
