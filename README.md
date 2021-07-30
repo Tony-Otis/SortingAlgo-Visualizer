@@ -1,5 +1,5 @@
 # SortingAlgo-Visualizer
- Sorting Algorithm Visualization with Matplotlib
+ Sorting Algorithm Visualization with Matplotlib.
  This project was made with the aim of helping the understanding of Sorting Algorithms.
 
 ## Algorithms Implemented
