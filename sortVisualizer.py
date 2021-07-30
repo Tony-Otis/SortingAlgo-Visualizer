@@ -24,7 +24,7 @@ elif generator == 3:
     generator=heapSort(array)
 
 (fig, ax) = plt.subplots()
-ax.set_title('Heap Sort', fontsize=20)
+ax.set_title('Algorithm', fontsize=20)
 plt.xlabel('Bars')
 plt.ylabel('Values')
 
@@ -63,6 +63,6 @@ writer=writers['pillow']
 writer = writer(fps=30, metadata={'artist': 'Me'}, bitrate=1800)
 
 if save:
-    animation.save('heapsort.gif')
+    animation.save('visualization.gif')
 
 plt.show()
