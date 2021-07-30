@@ -4,7 +4,7 @@ import matplotlib.pyplot as plt
 from matplotlib.animation import FuncAnimation, writers
 
 from insertionSort import insertion_sort
-from mergesort import mergeSort
+from heapsort import heapSort
 from selectionsort import selection_sort
 
 # create random array
@@ -14,17 +14,17 @@ array = [i for i in range(1, x + 1)]
 random.shuffle(array)
 
 
-generator = mergeSort(array)
-# generator = int(input('choose algorith, 1:insertion, 2:selection, 3:mergesort  :'))
-# if generator == 1:
-#     generator=insertion_sort(array)
-# elif generator == 2:
-#     generator=selection_sort(array)
-# elif generator == 3:
-#     generator=merge_sort(array)
+
+generator = int(input('choose algorith, 1:insertion, 2:selection, 3:heap_sort  :'))
+if generator == 1:
+    generator=insertion_sort(array)
+elif generator == 2:
+    generator=selection_sort(array)
+elif generator == 3:
+    generator=heapSort(array)
 
 (fig, ax) = plt.subplots()
-ax.set_title('SortVisualizer', fontsize=20)
+ax.set_title('Heap Sort', fontsize=20)
 plt.xlabel('Bars')
 plt.ylabel('Values')
 
@@ -55,14 +55,14 @@ animation = FuncAnimation(
     repeat=False,
 )
 
-# save = input('Save Animation? (y|n) :')
-# if save != 'y':
-#     save=False
-# # setting up writers object to capture animation in gif formart
-# writer=writers['pillow']
-# writer = writer(fps=30, metadata={'artist': 'Me'}, bitrate=1800)
+save = input('Save Animation? (y|n) :')
+if save != 'y':
+    save=False
+# setting up writers object to capture animation in gif formart
+writer=writers['pillow']
+writer = writer(fps=30, metadata={'artist': 'Me'}, bitrate=1800)
 
-# if save:
-#     animation.save('visualization.gif')
+if save:
+    animation.save('heapsort.gif')
 
 plt.show()
