@@ -37,8 +37,7 @@ rect = ax.bar(range(len(array)), array)
 
 def animate(array, rect, iter):
 
-    # setting the size of each bar equal
-    # to the value of the arrays
+    # resize bars to equal corresponding arrays
 
     for (rect, val) in zip(rect, array):
         rect.set_height(val)
