@@ -15,5 +15,4 @@ def insertion_sort(array):
 
         array[j + 1] = key
 
-
         yield array
