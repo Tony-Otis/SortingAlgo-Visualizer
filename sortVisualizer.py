@@ -14,14 +14,14 @@ array = [i for i in range(1, x + 1)]
 random.shuffle(array)
 
 
-
-generator = int(input('choose algorith, 1:insertion, 2:selection, 3:heap_sort  :'))
+generator = int(
+    input('choose algorith, 1:insertion, 2:selection, 3:heap_sort  :'))
 if generator == 1:
-    generator=insertion_sort(array)
+    generator = insertion_sort(array)
 elif generator == 2:
-    generator=selection_sort(array)
+    generator = selection_sort(array)
 elif generator == 3:
-    generator=heapSort(array)
+    generator = heapSort(array)
 
 (fig, ax) = plt.subplots()
 ax.set_title('Algorithm', fontsize=20)
@@ -32,7 +32,6 @@ set_xlim = (0, x)
 set_ylim = (1.2 * x)
 iter = [0]
 rect = ax.bar(range(len(array)), array)
-# rect[1].set_color('red')
 
 
 def animate(array, rect, iter):
@@ -45,6 +44,7 @@ def animate(array, rect, iter):
     iter[0] += 1
 
 
+# Animation
 animation = FuncAnimation(
     fig,
     func=animate,
@@ -56,9 +56,9 @@ animation = FuncAnimation(
 
 save = input('Save Animation? (y|n) :')
 if save != 'y':
-    save=False
+    save = False
 # setting up writers object to capture animation in gif formart
-writer=writers['pillow']
+writer = writers['pillow']
 writer = writer(fps=30, metadata={'artist': 'Me'}, bitrate=1800)
 
 if save:
